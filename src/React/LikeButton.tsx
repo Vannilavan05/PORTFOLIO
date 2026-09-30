@@ -1,13 +1,10 @@
 import { useState, useEffect } from "react";
-import { doc, onSnapshot, updateDoc, increment } from "firebase/firestore";
-import { db } from "../firebase";
 
 const LikeButton = () => {
   const [likes, setLikes] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isProcessing, setIsProcessing] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -17,51 +14,22 @@ const LikeButton = () => {
       setIsLiked(storedIsLiked === "true");
     }
 
-    // Listen for realtime updates from Firestore
-    const likeDocRef = doc(db, "likes", "counter");
-    const unsubscribe = onSnapshot(
-      likeDocRef,
-      (docSnap) => {
-        if (docSnap.exists()) {
-          const currentLikes = docSnap.data().likes;
-          setLikes(Math.max(0, currentLikes));
-        }
-      },
-      () => {
-        // Fallback silently if offline or unconfigured
-        const localLikes = parseInt(localStorage.getItem("websiteLikesCount") || "24", 10);
-        setLikes(localLikes);
-      }
-    );
-
-    return () => unsubscribe();
+    const localLikes = parseInt(localStorage.getItem("websiteLikesCount") || "24", 10);
+    setLikes(localLikes);
   }, []);
 
-  const handleLike = async () => {
-    if (isProcessing || isLiked) return;
+  const handleLike = () => {
+    if (isLiked) return;
 
-    // Optimistic Update
-    const previousLikes = likes;
     setLikes((prev) => prev + 1);
     setIsLiked(true);
     setIsAnimating(true);
+    
     localStorage.setItem("websiteIsLiked", "true");
-    localStorage.setItem("websiteLikesCount", String(previousLikes + 1));
+    localStorage.setItem("websiteLikesCount", String(likes + 1));
 
     // Reset animation after it finishes
     setTimeout(() => setIsAnimating(false), 600);
-
-    try {
-      setIsProcessing(true);
-      const likeDocRef = doc(db, "likes", "counter");
-      await updateDoc(likeDocRef, {
-        likes: increment(1),
-      });
-    } catch {
-      // Silently retain optimistic like locally
-    } finally {
-      setIsProcessing(false);
-    }
   };
 
   if (!isClient) return null;
@@ -74,7 +42,7 @@ const LikeButton = () => {
     <div className="flex items-center">
       <button
         onClick={handleLike}
-        disabled={isProcessing || isLiked}
+        disabled={isLiked}
         className={`
           group relative w-40 h-10 flex items-center justify-center p-3
           rounded-full transition-all duration-300 ease-in-out transform border-2 ${borderColorClass}

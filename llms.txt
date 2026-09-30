@@ -2,11 +2,10 @@
 
 > Open-source personal portfolio template for developers, built with Astro, React, and Tailwind CSS.
 > Designed to be cloned, customized, and deployed with minimal configuration; includes a working
-> contact form, a Spotify album embed, and a Firebase-backed like counter.
+> contact form, a Spotify album embed, and a local like counter.
 
 Built as an Astro static site with React islands for interactive components. Requires Node.js >= 20
-and pnpm >= 9. External services needed for full functionality: a Formspree account (contact form)
-and a Firebase project (like counter). Spotify embed is a plain HTML iframe--no API key required.
+and pnpm >= 9. External services needed for full functionality: a Formspree account (contact form). Spotify embed is a plain HTML iframe--no API key required.
 
 ## Docs
 
@@ -22,7 +21,6 @@ and a Firebase project (like counter). Spotify embed is a plain HTML iframe--no 
 - **React 19** -- interactive islands (LetterGlitch animation, LikeButton, SkillsList)
 - **Tailwind CSS** -- utility-first styling
 - **TypeScript** -- type checking across `.astro` and `.tsx` files
-- **Firebase / Firestore** -- realtime like counter with optimistic UI updates
 - **Formspree** -- serverless contact form backend
 - **Montserrat** (Fontsource variable) -- primary typeface
 - **OGL** -- WebGL utility used by the LetterGlitch canvas effect
