@@ -1,0 +1,68 @@
+---
+const technologies = [
+  { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+  { name: "SQL", icon: "/svg/mysql.svg" },
+  { name: "AWS (EC2, S3)", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+  { name: "Gemini API", icon: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" },
+  { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+  { name: "SQLite", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg" },
+  { name: "SAP Analytics Cloud", icon: "/svg/sap.svg" },
+  { name: "Git & GitHub", icon: "/svg/git.svg" },
+  { name: "Linux / Bash", icon: "/svg/bash.svg" },
+];
+---
+
+<div class="relative overflow-x-hidden py-8">
+  <div class="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[var(--background)] to-transparent z-20"></div>
+  <div class="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[var(--background)] to-transparent z-20"></div>
+
+  <div class="flex animate-scroll w-max will-change-transform">
+    {
+      [...technologies, ...technologies].map((tech, index) => (
+        <div 
+          class="flex items-center gap-2.5 pr-10 md:pr-14 group transition-all duration-300"
+          aria-hidden={index >= technologies.length ? "true" : "false"}
+        >
+          <div class="w-8 h-8 flex items-center justify-center rounded-lg bg-[#181818] p-1 border border-[#ffffff15] group-hover:border-[var(--sec)] transition-colors">
+            <img
+              src={tech.icon}
+              alt={tech.name}
+              class="max-h-5 max-w-6 object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+              width="24"
+              height="20"
+              loading={index < technologies.length ? "eager" : "lazy"}
+              decoding="async"
+            />
+          </div>
+          <span class="text-sm md:text-base font-medium text-[var(--white-icon)] whitespace-nowrap group-hover:text-[var(--white)] transition-colors">
+            {tech.name}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style is:global>
+  @keyframes scroll {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  .animate-scroll {
+    animation: scroll 35s linear infinite;
+  }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
+
+  @media (min-width: 768px) {
+    .animate-scroll {
+      animation-duration: 30s;
+    }
+  }
+</style>
