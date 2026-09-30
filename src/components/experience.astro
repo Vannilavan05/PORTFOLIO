@@ -1,0 +1,124 @@
+---
+const internships = [
+  {
+    role: "Artificial Intelligence Intern",
+    company: "Eagle Hitech",
+    location: "Chennai, India",
+    period: "Dec 2025",
+    description: "Developed a crop disease prediction model, applying core AI and machine learning concepts through practical, hands-on data analysis workflows.",
+    highlights: ["Machine Learning", "Crop Disease Prediction", "Data Analysis Workflows"],
+  },
+  {
+    role: "Cloud Intern (AWS)",
+    company: "Elewayte",
+    location: "Karur, India",
+    period: "2023",
+    description: "Worked as a cloud practitioner, building AWS fundamentals through hands-on experience with Amazon EC2 and Amazon S3.",
+    highlights: ["Amazon EC2", "Amazon S3", "Cloud Architecture Basics"],
+  },
+];
+
+const education = [
+  {
+    degree: "B.Tech, Artificial Intelligence and Data Science",
+    institution: "V.S.B Engineering College, Karur (Anna University)",
+    period: "2023 – Present",
+    score: "CGPA: 8.63",
+    status: "Undergraduate",
+  },
+  {
+    degree: "Higher Secondary Education",
+    institution: "Marutham Matric Higher Secondary School, Morappur",
+    period: "2022 – 2023",
+    score: "Score: 87%",
+    status: "Completed",
+  },
+];
+---
+
+<section id="experience" class="py-12 border-t border-[#ffffff10] text-[var(--white)]">
+  <div class="max-w-5xl mx-auto">
+    <div class="mb-10">
+      <h2 class="text-sm font-semibold uppercase tracking-wider text-[var(--sec)] mb-2 shiny-sec">Background</h2>
+      <h3 class="text-4xl md:text-5xl font-semibold tracking-tight">Experience & Education</h3>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <!-- Internships Column -->
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-xl bg-[#1c1c1c] border border-[var(--white-icon-tr)] text-[var(--sec)]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+          <h4 class="text-2xl font-medium text-[var(--white)]">Internship Experience</h4>
+        </div>
+
+        <div class="space-y-4">
+          {internships.map((internship) => (
+            <div class="p-6 rounded-2xl bg-[#1414149c] border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-colors duration-300 space-y-3">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h5 class="text-lg font-semibold text-[var(--white)]">{internship.role}</h5>
+                  <p class="text-sm text-[var(--sec)] font-medium">{internship.company} <span class="text-[var(--white-icon)] font-normal">• {internship.location}</span></p>
+                </div>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-[#1e1e1e] border border-[#ffffff15] text-[var(--white-icon)] font-mono">
+                  {internship.period}
+                </span>
+              </div>
+              <p class="text-sm text-[var(--white-icon)] leading-relaxed">
+                {internship.description}
+              </p>
+              <div class="flex flex-wrap gap-2 pt-1">
+                {internship.highlights.map((tag) => (
+                  <span class="text-xs px-2.5 py-0.5 rounded-md bg-[#222222] text-[var(--white)] border border-[#ffffff10]">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Education Column -->
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-xl bg-[#1c1c1c] border border-[var(--white-icon-tr)] text-[var(--sec)]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <h4 class="text-2xl font-medium text-[var(--white)]">Education</h4>
+        </div>
+
+        <div class="space-y-4">
+          {education.map((edu) => (
+            <div class="p-6 rounded-2xl bg-[#1414149c] border border-[var(--white-icon-tr)] hover:border-[var(--sec)] transition-colors duration-300 space-y-3">
+              <div class="flex flex-wrap items-start justify-between gap-2">
+                <div>
+                  <h5 class="text-lg font-semibold text-[var(--white)]">{edu.degree}</h5>
+                  <p class="text-sm text-[var(--white-icon)]">{edu.institution}</p>
+                </div>
+                <span class="text-xs px-2.5 py-1 rounded-full bg-[#1e1e1e] border border-[#ffffff15] text-[var(--white-icon)] font-mono">
+                  {edu.period}
+                </span>
+              </div>
+              <div class="flex items-center justify-between pt-2">
+                <span class="text-sm font-semibold text-[var(--sec)] bg-[#a476ff15] px-3 py-1 rounded-lg border border-[#a476ff30]">
+                  {edu.score}
+                </span>
+                <span class="text-xs text-[var(--white-icon)]">
+                  {edu.status}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
