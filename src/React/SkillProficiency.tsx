@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 interface ToolItem {
   name: string;
-  category: "ai" | "data" | "cloud" | "dev";
+  category: "data" | "cloud" | "dev";
   categoryLabel: string;
   description: string;
   appliedIn: string;
@@ -10,32 +10,6 @@ interface ToolItem {
 }
 
 const toolsData: ToolItem[] = [
-  // Generative AI & Machine Learning
-  {
-    name: "Generative AI Integration",
-    category: "ai",
-    categoryLabel: "AI & ML",
-    description: "Generative AI API integration, prompt engineering, and automated reasoning workflows.",
-    appliedIn: "AI Leave Management & Backup Audit Systems",
-    badge: "Generative AI",
-  },
-  {
-    name: "Predictive Machine Learning",
-    category: "ai",
-    categoryLabel: "AI & ML",
-    description: "Training and evaluating predictive classification models on real-world datasets.",
-    appliedIn: "Crop Disease Prediction at Eagle Hitech",
-    badge: "Machine Learning",
-  },
-  {
-    name: "Data Preprocessing & Evaluation",
-    category: "ai",
-    categoryLabel: "AI & ML",
-    description: "Feature extraction, dataset balancing, model evaluation metrics, and validation pipelines.",
-    appliedIn: "Internship ML Workflows & AI Studio",
-    badge: "ML Operations",
-  },
-
   // Programming & Databases
   {
     name: "Python",
@@ -132,11 +106,10 @@ const toolsData: ToolItem[] = [
 ];
 
 export const SkillProficiency: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<"all" | "ai" | "data" | "cloud" | "dev">("all");
+  const [activeCategory, setActiveCategory] = useState<"all" | "data" | "cloud" | "dev">("all");
 
   const categories = [
     { id: "all", label: "All Tools" },
-    { id: "ai", label: "AI & Machine Learning" },
     { id: "data", label: "Programming & Databases" },
     { id: "cloud", label: "Cloud & Enterprise" },
     { id: "dev", label: "Developer Tools" },
