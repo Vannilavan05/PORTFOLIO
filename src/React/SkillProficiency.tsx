@@ -12,7 +12,7 @@ interface ToolItem {
 const toolsData: ToolItem[] = [
   // Generative AI & Machine Learning
   {
-    name: "Google Gemini API",
+    name: "Generative AI Integration",
     category: "ai",
     categoryLabel: "AI & ML",
     description: "Generative AI API integration, prompt engineering, and automated reasoning workflows.",
